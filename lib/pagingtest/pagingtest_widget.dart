@@ -21,7 +21,8 @@ class _PagingtestWidgetState extends State<PagingtestWidget> {
   ApiCallResponse call3;
   String dropDownValue1;
   String dropDownValue2;
-  TextEditingController textController;
+  TextEditingController textController1;
+  TextEditingController textController2;
   ApiCallResponse call;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -50,7 +51,8 @@ class _PagingtestWidgetState extends State<PagingtestWidget> {
           ));
     });
 
-    textController = TextEditingController(text: functions.getUrl());
+    textController1 = TextEditingController(text: functions.getUrlCopy());
+    textController2 = TextEditingController(text: functions.getUrl1Copy());
   }
 
   @override
@@ -257,9 +259,43 @@ class _PagingtestWidgetState extends State<PagingtestWidget> {
                 ),
               ),
               TextFormField(
-                controller: textController,
+                controller: textController1,
                 onChanged: (_) => EasyDebounce.debounce(
-                  'textController',
+                  'textController1',
+                  Duration(milliseconds: 2000),
+                  () => setState(() {}),
+                ),
+                autofocus: true,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: '[Some hint text...]',
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+              ),
+              TextFormField(
+                controller: textController2,
+                onChanged: (_) => EasyDebounce.debounce(
+                  'textController2',
                   Duration(milliseconds: 2000),
                   () => setState(() {}),
                 ),

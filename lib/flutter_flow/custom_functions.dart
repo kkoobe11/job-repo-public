@@ -18,10 +18,26 @@ String getUrl() {
   return text;
 }
 
+String getUrlCopy() {
+  String myUrl = Uri.base.toString();
+  String token = Uri.base.queryParameters["token"];
+  String text = Uri.base.path;
+
+  return myUrl;
+}
+
 String getUrl1() {
-  String pageUrl = Uri.base.path;
-  var uri = Uri.dataFromString(pageUrl);
+  String myUrl = Uri.base.toString();
+  var uri = Uri.dataFromString(myUrl);
   var uuid = uri.queryParameters["token"];
   String token = uuid;
   return token;
+}
+
+String getUrl1Copy() {
+  String myUrl = Uri.base.toString();
+  var uri = Uri.dataFromString(myUrl);
+  var uuid = uri.queryParameters["messagingSenderId"];
+  String sample = uuid;
+  return sample;
 }
