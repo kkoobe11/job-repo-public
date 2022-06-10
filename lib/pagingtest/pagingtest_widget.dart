@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -49,7 +50,7 @@ class _PagingtestWidgetState extends State<PagingtestWidget> {
           ));
     });
 
-    textController = TextEditingController(text: FFAppState().user);
+    textController = TextEditingController(text: functions.getUrl());
   }
 
   @override
