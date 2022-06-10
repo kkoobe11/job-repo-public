@@ -326,6 +326,26 @@ class _PagingtestWidgetState extends State<PagingtestWidget> {
                 ),
                 style: FlutterFlowTheme.of(context).bodyText1,
               ),
+              FFButtonWidget(
+                onPressed: () async {
+                  context.pushNamed('landingpage');
+                },
+                text: 'landing page',
+                options: FFButtonOptions(
+                  width: 130,
+                  height: 40,
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                      ),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: 12,
+                ),
+              ),
             ],
           ),
         ),

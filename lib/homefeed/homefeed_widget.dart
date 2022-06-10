@@ -2,9 +2,7 @@ import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -17,26 +15,7 @@ class HomefeedWidget extends StatefulWidget {
 }
 
 class _HomefeedWidgetState extends State<HomefeedWidget> {
-  ApiCallResponse result;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    // On page load action.
-    SchedulerBinding.instance?.addPostFrameCallback((_) async {
-      result = await MagicLoginCall.call(
-        token: functions.getUrl1(),
-      );
-      setState(() => FFAppState().authToken = getJsonField(
-            (result?.jsonBody ?? ''),
-            r'''$''',
-          ).toString());
-      await AuthMeCall.call(
-        authToken: FFAppState().authToken,
-      );
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -388,6 +367,10 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                             children: [
                               Text(
                                 FFAppState().authToken,
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                              Text(
+                                FFAppState().pageurl,
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               Padding(

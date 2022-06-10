@@ -44,6 +44,10 @@ class FFAppState {
   String statusInterviewed = 'Interviewed';
 
   String authToken = '';
+
+  dynamic userInfo;
+
+  String pageurl = '';
 }
 
 LatLng _latLngFromString(String val) {
