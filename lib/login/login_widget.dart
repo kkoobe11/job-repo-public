@@ -16,6 +16,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  ApiCallResponse res;
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -233,11 +234,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                await MagicLinkCall.call(
+                                res = await MagicLinkCall.call(
                                   email: textController.text,
                                 );
+                                setState(() =>
+                                    FFAppState().Authorization = getJsonField(
+                                      (res?.jsonBody ?? ''),
+                                      r'''$.magic_link.jwt''',
+                                    ).toString());
                                 await launchURL(
                                     'https://accounts.google.com/signin/v2/identifier?service=mail&passive=1209600&osid=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin');
+
+                                setState(() {});
                               },
                               text: 'Login\n',
                               options: FFButtonOptions(

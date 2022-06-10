@@ -1,6 +1,4 @@
-import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -9,7 +7,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:share_plus/share_plus.dart';
 
 class HomefeedWidget extends StatefulWidget {
   const HomefeedWidget({Key key}) : super(key: key);
@@ -21,7 +18,6 @@ class HomefeedWidget extends StatefulWidget {
 class _HomefeedWidgetState extends State<HomefeedWidget> {
   ApiCallResponse result;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  String _currentPageLink = '';
 
   @override
   void initState() {
@@ -29,7 +25,7 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
     // On page load action.
     SchedulerBinding.instance?.addPostFrameCallback((_) async {
       result = await MagicLoginCall.call(
-        token: currentJwtToken,
+        token: FFAppState().Authorization,
       );
       setState(() => FFAppState().authToken = getJsonField(
             (result?.jsonBody ?? ''),
@@ -327,31 +323,6 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                         ),
                                                       ),
                                                     ],
-                                                  ),
-                                                  FlutterFlowIconButton(
-                                                    borderColor:
-                                                        Colors.transparent,
-                                                    borderRadius: 30,
-                                                    borderWidth: 1,
-                                                    buttonSize: 60,
-                                                    icon: Icon(
-                                                      Icons.ios_share,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .btnText,
-                                                      size: 30,
-                                                    ),
-                                                    onPressed: () async {
-                                                      _currentPageLink =
-                                                          await generateCurrentPageLink(
-                                                              context);
-                                                      setState(() =>
-                                                          FFAppState().user =
-                                                              _currentPageLink);
-                                                      await Share.share(
-                                                          _currentPageLink);
-                                                    },
                                                   ),
                                                 ],
                                               ),

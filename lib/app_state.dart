@@ -23,8 +23,7 @@ class FFAppState {
 
   dynamic records;
 
-  String Authorization =
-      'eyJhbGciOiJBMjU2S1ciLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwiemlwIjoiREVGIn0.PTY7TWfx2OCOU8wlp-5j7jNb1P25hYcGZP-7PEd2m6uTHCcAoYyX1FJUgpF6WY4-1VJdAlXxGCRB4CoXvadPGn0H2hArrYNH.OgX31smMIZYrLQE068IdcA.23wKnwzgIAROlxe1v8AHiQ3F2WrtcuF2q3roNMnQT8JB8qxm7UqPALWeOsX_4jhFhz3kgWWZTNkCTWdMZWBp6NmS6JGtsWYIGYex6xX5FyhY6qI3NjgyKUMH_anVb01aO8RiHSWXhnqGDjSz_7n26A.v-acfLeEBQMJQkAnAe3csWZSCx0_WOQbdal2cidVvyA';
+  String Authorization = '';
 
   bool visibility = false;
 

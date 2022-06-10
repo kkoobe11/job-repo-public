@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>ahg_job_repository</string>
+        <string>ahgjobrepository.page.link</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>com.flutterflow.ahgjobrepository</string>
+        <string>ahgjobrepository</string>
         </array>
         </dict>
     </array>
