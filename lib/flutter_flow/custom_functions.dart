@@ -13,5 +13,15 @@ import '../../auth/auth_util.dart';
 String getUrl() {
   String myUrl = Uri.base.toString();
   String token = Uri.base.queryParameters["token"];
-  return myUrl;
+  String text = Uri.base.path;
+
+  return text;
+}
+
+String getUrl1() {
+  String pageUrl = Uri.base.path;
+  var uri = Uri.dataFromString(pageUrl);
+  var uuid = uri.queryParameters["token"];
+  String token = uuid;
+  return token;
 }

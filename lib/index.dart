@@ -1,5 +1,6 @@
 // Export pages
 export 'login/login_widget.dart' show LoginWidget;
+export 'landingpage/landingpage_widget.dart' show LandingpageWidget;
 export 'homefeed/homefeed_widget.dart' show HomefeedWidget;
 export 'appplicant_list/appplicant_list_widget.dart' show AppplicantListWidget;
 export 'extend/extend_widget.dart' show ExtendWidget;

@@ -81,6 +81,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
+              name: 'landingpage',
+              path: 'landingpage',
+              builder: (context, params) => LandingpageWidget(),
+            ),
+            FFRoute(
               name: 'homefeed',
               path: 'homefeed',
               builder: (context, params) => HomefeedWidget(),

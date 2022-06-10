@@ -26,7 +26,7 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
     // On page load action.
     SchedulerBinding.instance?.addPostFrameCallback((_) async {
       result = await MagicLoginCall.call(
-        token: functions.getUrl(),
+        token: functions.getUrl1(),
       );
       setState(() => FFAppState().authToken = getJsonField(
             (result?.jsonBody ?? ''),
