@@ -81,11 +81,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
-              name: 'landingpage',
-              path: 'landingpage',
-              builder: (context, params) => LandingpageWidget(),
-            ),
-            FFRoute(
               name: 'homefeed',
               path: 'homefeed',
               builder: (context, params) => HomefeedWidget(),
@@ -129,6 +124,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'loginanimation',
               path: 'loginanimation',
               builder: (context, params) => LoginanimationWidget(),
+            ),
+            FFRoute(
+              name: 'landingpage',
+              path: 'landingpage',
+              builder: (context, params) => LandingpageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
