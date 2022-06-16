@@ -3,7 +3,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginmessageWidget extends StatefulWidget {
@@ -15,16 +14,6 @@ class LoginmessageWidget extends StatefulWidget {
 
 class _LoginmessageWidgetState extends State<LoginmessageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    // On page load action.
-    SchedulerBinding.instance?.addPostFrameCallback((_) async {
-      await launchURL(
-          'https://accounts.google.com/signin/v2/identifier?service=mail&passive=1209600&osid=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin');
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +37,7 @@ class _LoginmessageWidgetState extends State<LoginmessageWidget> {
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
                         image: DecorationImage(
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.fill,
                           image: Image.asset(
                             'assets/images/buildinga_-_Copy.png',
                           ).image,
@@ -295,7 +284,8 @@ class _LoginmessageWidgetState extends State<LoginmessageWidget> {
                                                   children: [
                                                     FFButtonWidget(
                                                       onPressed: () async {
-                                                        await launchURL('');
+                                                        await launchURL(
+                                                            'https://accounts.google.com/signin/v2/identifier?service=mail&passive=1209600&osid=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin');
                                                       },
                                                       text: 'Proceed to gmail',
                                                       options: FFButtonOptions(

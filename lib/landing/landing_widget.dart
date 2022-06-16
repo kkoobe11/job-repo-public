@@ -15,6 +15,7 @@ class LandingWidget extends StatefulWidget {
 }
 
 class _LandingWidgetState extends State<LandingWidget> {
+  ApiCallResponse data;
   ApiCallResponse result;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -40,7 +41,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
                         image: DecorationImage(
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.fill,
                           image: Image.asset(
                             'assets/images/buildinga_-_Copy.png',
                           ).image,
@@ -301,6 +302,14 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                   ''),
                                                               r'''$''',
                                                             ).toString());
+                                                        data =
+                                                            await ApplicantDashboardCall
+                                                                .call();
+                                                        setState(() =>
+                                                            FFAppState()
+                                                                    .dashboard =
+                                                                (data?.jsonBody ??
+                                                                    ''));
                                                         context.pushNamed(
                                                             'newHomefeed');
 
