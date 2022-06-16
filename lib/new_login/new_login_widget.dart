@@ -46,7 +46,7 @@ class _NewLoginWidgetState extends State<NewLoginWidget> {
                       decoration: BoxDecoration(
                         color: Color(0xFFEEEEEE),
                         image: DecorationImage(
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.fill,
                           image: Image.asset(
                             'assets/images/buildinga_-_Copy.png',
                           ).image,
