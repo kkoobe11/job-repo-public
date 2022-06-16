@@ -48,6 +48,8 @@ class FFAppState {
   dynamic userInfo;
 
   String pageurl = '';
+
+  dynamic dashboard;
 }
 
 LatLng _latLngFromString(String val) {

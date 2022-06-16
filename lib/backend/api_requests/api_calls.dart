@@ -203,17 +203,13 @@ class LatestApplicantCall {
 }
 
 class ApplicantDashboardCall {
-  static Future<ApiCallResponse> call({
-    String deptStatus = '',
-  }) {
+  static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
       callName: 'applicant dashboard',
       apiUrl: 'https://api.ahglab.com/api:rHt2aRC2/applicants/dashboard/query',
       callType: ApiCallType.GET,
       headers: {},
-      params: {
-        'deptStatus': deptStatus,
-      },
+      params: {},
       returnBody: true,
     );
   }

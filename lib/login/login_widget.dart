@@ -92,7 +92,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
                             child: InkWell(
                               onTap: () async {
-                                context.pushNamed('pagingtest');
+                                context.pushNamed('newLogin');
                               },
                               child: Container(
                                 width: 100,

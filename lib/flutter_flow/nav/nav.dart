@@ -66,44 +66,29 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? LoginanimationWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? NewHomefeedWidget() : NewLoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? LoginanimationWidget()
-              : LoginWidget(),
+              ? NewHomefeedWidget()
+              : NewLoginWidget(),
           routes: [
-            FFRoute(
-              name: 'login',
-              path: 'login',
-              builder: (context, params) => LoginWidget(),
-            ),
-            FFRoute(
-              name: 'homefeed',
-              path: 'homefeed',
-              builder: (context, params) => HomefeedWidget(),
-            ),
-            FFRoute(
-              name: 'appplicantList',
-              path: 'appplicantList',
-              builder: (context, params) => AppplicantListWidget(),
-            ),
-            FFRoute(
-              name: 'extend',
-              path: 'extend',
-              builder: (context, params) => ExtendWidget(),
-            ),
-            FFRoute(
-              name: 'addApplicant',
-              path: 'addApplicant',
-              builder: (context, params) => AddApplicantWidget(),
-            ),
             FFRoute(
               name: 'newLogin',
               path: 'newLogin',
               builder: (context, params) => NewLoginWidget(),
+            ),
+            FFRoute(
+              name: 'loginmessage',
+              path: 'loginmessage',
+              builder: (context, params) => LoginmessageWidget(),
+            ),
+            FFRoute(
+              name: 'landing',
+              path: 'landing',
+              builder: (context, params) => LandingWidget(),
             ),
             FFRoute(
               name: 'newHomefeed',
@@ -116,14 +101,59 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => NewApplicantListWidget(),
             ),
             FFRoute(
-              name: 'pagingtest',
-              path: 'pagingtest',
-              builder: (context, params) => PagingtestWidget(),
+              name: 'editApplicant',
+              path: 'editApplicant',
+              builder: (context, params) => EditApplicantWidget(),
+            ),
+            FFRoute(
+              name: 'table',
+              path: 'table',
+              builder: (context, params) => TableWidget(),
+            ),
+            FFRoute(
+              name: 'newAddApplicant',
+              path: 'newAddApplicant',
+              builder: (context, params) => NewAddApplicantWidget(),
+            ),
+            FFRoute(
+              name: 'scaffold',
+              path: 'scaffold',
+              builder: (context, params) => ScaffoldWidget(),
+            ),
+            FFRoute(
+              name: 'login',
+              path: 'login',
+              builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
               name: 'loginanimation',
               path: 'loginanimation',
               builder: (context, params) => LoginanimationWidget(),
+            ),
+            FFRoute(
+              name: 'homefeed',
+              path: 'homefeed',
+              builder: (context, params) => HomefeedWidget(),
+            ),
+            FFRoute(
+              name: 'extend',
+              path: 'extend',
+              builder: (context, params) => ExtendWidget(),
+            ),
+            FFRoute(
+              name: 'appplicantList',
+              path: 'appplicantList',
+              builder: (context, params) => AppplicantListWidget(),
+            ),
+            FFRoute(
+              name: 'addApplicant',
+              path: 'addApplicant',
+              builder: (context, params) => AddApplicantWidget(),
+            ),
+            FFRoute(
+              name: 'pagingtest',
+              path: 'pagingtest',
+              builder: (context, params) => PagingtestWidget(),
             ),
             FFRoute(
               name: 'landingpage',
@@ -278,7 +308,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/login';
+            return '/newLogin';
           }
           return null;
         },

@@ -191,7 +191,7 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                         child: FFButtonWidget(
                                                           onPressed: () async {
                                                             context.pushNamed(
-                                                              'appplicantList',
+                                                              'newApplicantList',
                                                               extra: <String,
                                                                   dynamic>{
                                                                 kTransitionInfoKey:
@@ -413,41 +413,11 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 5, 0, 0),
-                                                    child: FutureBuilder<
-                                                        ApiCallResponse>(
-                                                      future:
-                                                          ApplicantDashboardCall
-                                                              .call(
-                                                        deptStatus: 'New',
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50,
-                                                              height: 50,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        final textApplicantDashboardResponse =
-                                                            snapshot.data;
-                                                        return Text(
-                                                          getJsonField(
-                                                            (textApplicantDashboardResponse
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.applicantCount''',
-                                                          ).toString(),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
+                                                    child: Text(
+                                                      '13',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .title1
                                                               .override(
                                                                 fontFamily:
@@ -456,8 +426,6 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                                     0xFF1A1A1A),
                                                                 fontSize: 48,
                                                               ),
-                                                        );
-                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -518,41 +486,11 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 5, 0, 0),
-                                                    child: FutureBuilder<
-                                                        ApiCallResponse>(
-                                                      future:
-                                                          ApplicantDashboardCall
-                                                              .call(
-                                                        deptStatus: 'Hired',
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50,
-                                                              height: 50,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        final textApplicantDashboardResponse =
-                                                            snapshot.data;
-                                                        return Text(
-                                                          getJsonField(
-                                                            (textApplicantDashboardResponse
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.applicantCount''',
-                                                          ).toString(),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
+                                                    child: Text(
+                                                      '38',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .title1
                                                               .override(
                                                                 fontFamily:
@@ -561,8 +499,6 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                                     0xFF1A1A1A),
                                                                 fontSize: 48,
                                                               ),
-                                                        );
-                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -635,42 +571,11 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 5, 0, 0),
-                                                    child: FutureBuilder<
-                                                        ApiCallResponse>(
-                                                      future:
-                                                          ApplicantDashboardCall
-                                                              .call(
-                                                        deptStatus:
-                                                            'Interviewed',
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50,
-                                                              height: 50,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        final textApplicantDashboardResponse =
-                                                            snapshot.data;
-                                                        return Text(
-                                                          getJsonField(
-                                                            (textApplicantDashboardResponse
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.applicantCount''',
-                                                          ).toString(),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
+                                                    child: Text(
+                                                      '75',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .title1
                                                               .override(
                                                                 fontFamily:
@@ -679,8 +584,6 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                                     0xFF1A1A1A),
                                                                 fontSize: 48,
                                                               ),
-                                                        );
-                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -763,41 +666,11 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 5, 0, 0),
-                                                    child: FutureBuilder<
-                                                        ApiCallResponse>(
-                                                      future:
-                                                          ApplicantDashboardCall
-                                                              .call(
-                                                        deptStatus: 'Rejected',
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50,
-                                                              height: 50,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        final textApplicantDashboardResponse =
-                                                            snapshot.data;
-                                                        return Text(
-                                                          getJsonField(
-                                                            (textApplicantDashboardResponse
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.applicantCount''',
-                                                          ).toString(),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
+                                                    child: Text(
+                                                      '12',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .title1
                                                               .override(
                                                                 fontFamily:
@@ -806,8 +679,6 @@ class _HomefeedWidgetState extends State<HomefeedWidget> {
                                                                     0xFF1A1A1A),
                                                                 fontSize: 48,
                                                               ),
-                                                        );
-                                                      },
                                                     ),
                                                   ),
                                                 ],
