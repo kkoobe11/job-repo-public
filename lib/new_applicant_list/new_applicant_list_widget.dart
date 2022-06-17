@@ -6,6 +6,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewApplicantListWidget extends StatefulWidget {
@@ -26,6 +27,16 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      if ((FFAppState().authToken != null) && (FFAppState().authToken != '')) {
+        return;
+      }
+
+      context.goNamed('newLogin');
+      return;
+    });
+
     textController = TextEditingController();
   }
 
@@ -1378,8 +1389,9 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                                                                   color: Colors.black,
                                                                                                                   size: 30,
                                                                                                                 ),
-                                                                                                                onPressed: () {
-                                                                                                                  print('IconButton pressed ...');
+                                                                                                                onPressed: () async {
+                                                                                                                  setState(() => FFAppState().records = listItem);
+                                                                                                                  context.pushNamed('applicanInformation');
                                                                                                                 },
                                                                                                               ),
                                                                                                             ],

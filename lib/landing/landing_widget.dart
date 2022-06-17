@@ -310,7 +310,7 @@ class _LandingWidgetState extends State<LandingWidget> {
                                                                     .dashboard =
                                                                 (data?.jsonBody ??
                                                                     ''));
-                                                        context.pushNamed(
+                                                        context.goNamed(
                                                             'newHomefeed');
 
                                                         setState(() {});

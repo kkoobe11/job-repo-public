@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditApplicantWidget extends StatefulWidget {
@@ -22,11 +23,20 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
   TextEditingController textController4;
   TextEditingController textController5;
   TextEditingController textController6;
+  TextEditingController textController7;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance?.addPostFrameCallback((_) async {
+      if (!((FFAppState().authToken != null) &&
+          (FFAppState().authToken != ''))) {
+        context.goNamed('newLogin');
+      }
+    });
+
     textController1 = TextEditingController(
         text: getJsonField(
       FFAppState().records,
@@ -53,6 +63,7 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
       r'''$.created_at''',
     ).toString());
     textController6 = TextEditingController();
+    textController7 = TextEditingController();
   }
 
   @override
@@ -479,12 +490,12 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            1.17, 0.95),
+                                                            1, 1),
                                                     child: Image.asset(
-                                                      'assets/images/shapes.png',
-                                                      width: 550,
-                                                      height: 400,
-                                                      fit: BoxFit.cover,
+                                                      'assets/images/cropped.png',
+                                                      width: 600,
+                                                      height: 600,
+                                                      fit: BoxFit.fill,
                                                     ),
                                                   ),
                                                   Align(
@@ -701,8 +712,8 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                       hintText:
                                                                           'Select Platfom',
                                                                       fillColor:
-                                                                          Colors
-                                                                              .white,
+                                                                          Color(
+                                                                              0xFFF7F7FC),
                                                                       elevation:
                                                                           2,
                                                                       borderColor:
@@ -781,6 +792,9 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .end,
                                                                 children: [
                                                                   Container(
                                                                     width: 500,
@@ -1452,39 +1466,28 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0, 0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
                                                               Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  Container(
-                                                                    width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width *
-                                                                        0.1,
-                                                                    height: 55,
-                                                                    decoration:
-                                                                        BoxDecoration(),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            25,
+                                                                            0,
+                                                                            0,
+                                                                            0),
                                                                     child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              50,
-                                                                              10,
-                                                                              0,
-                                                                              0),
+                                                                        Container(
+                                                                      width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width *
+                                                                          0.1,
+                                                                      height:
+                                                                          55,
+                                                                      decoration:
+                                                                          BoxDecoration(),
                                                                       child:
                                                                           Row(
                                                                         mainAxisSize:
@@ -1493,7 +1496,7 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                             MainAxisAlignment.start,
                                                                         children: [
                                                                           Text(
-                                                                            'Resume',
+                                                                            'Notes',
                                                                             style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                   fontFamily: 'Poppins',
                                                                                   fontSize: 18,
@@ -1584,6 +1587,257 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                               ),
                                                             ],
                                                           ),
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0, 0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width *
+                                                                        0.1,
+                                                                    height: 55,
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              50,
+                                                                              10,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            'Resume',
+                                                                            style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  fontSize: 18,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: 500,
+                                                                    height: 45,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFFF7F7FC),
+                                                                    ),
+                                                                    child:
+                                                                        TextFormField(
+                                                                      controller:
+                                                                          textController7,
+                                                                      onChanged:
+                                                                          (_) =>
+                                                                              EasyDebounce.debounce(
+                                                                        'textController7',
+                                                                        Duration(
+                                                                            milliseconds:
+                                                                                2000),
+                                                                        () => setState(
+                                                                            () {}),
+                                                                      ),
+                                                                      autofocus:
+                                                                          true,
+                                                                      obscureText:
+                                                                          false,
+                                                                      decoration:
+                                                                          InputDecoration(
+                                                                        hintText:
+                                                                            '[Some hint text...]',
+                                                                        enabledBorder:
+                                                                            UnderlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0x00000000),
+                                                                            width:
+                                                                                1,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              const BorderRadius.only(
+                                                                            topLeft:
+                                                                                Radius.circular(4.0),
+                                                                            topRight:
+                                                                                Radius.circular(4.0),
+                                                                          ),
+                                                                        ),
+                                                                        focusedBorder:
+                                                                            UnderlineInputBorder(
+                                                                          borderSide:
+                                                                              BorderSide(
+                                                                            color:
+                                                                                Color(0x00000000),
+                                                                            width:
+                                                                                1,
+                                                                          ),
+                                                                          borderRadius:
+                                                                              const BorderRadius.only(
+                                                                            topLeft:
+                                                                                Radius.circular(4.0),
+                                                                            topRight:
+                                                                                Radius.circular(4.0),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Container(
+                                                              width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width *
+                                                                  0.78,
+                                                              height: 80,
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .end,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .end,
+                                                                      children: [
+                                                                        Container(
+                                                                          width:
+                                                                              200,
+                                                                          height:
+                                                                              60,
+                                                                          decoration:
+                                                                              BoxDecoration(),
+                                                                          child:
+                                                                              FFButtonWidget(
+                                                                            onPressed:
+                                                                                () {
+                                                                              print('Button pressed ...');
+                                                                            },
+                                                                            text:
+                                                                                'Cancel',
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              width: 130,
+                                                                              height: 40,
+                                                                              color: FlutterFlowTheme.of(context).white,
+                                                                              textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                    fontFamily: 'Poppins',
+                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                  ),
+                                                                              elevation: 10,
+                                                                              borderSide: BorderSide(
+                                                                                color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                width: 1,
+                                                                              ),
+                                                                              borderRadius: 12,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Expanded(
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .end,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Container(
+                                                                          width:
+                                                                              200,
+                                                                          height:
+                                                                              60,
+                                                                          decoration:
+                                                                              BoxDecoration(),
+                                                                          child:
+                                                                              FFButtonWidget(
+                                                                            onPressed:
+                                                                                () {
+                                                                              print('Button pressed ...');
+                                                                            },
+                                                                            text:
+                                                                                'Save',
+                                                                            options:
+                                                                                FFButtonOptions(
+                                                                              width: 130,
+                                                                              height: 40,
+                                                                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                              textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                    fontFamily: 'Poppins',
+                                                                                    color: Colors.white,
+                                                                                  ),
+                                                                              elevation: 10,
+                                                                              borderSide: BorderSide(
+                                                                                color: Colors.transparent,
+                                                                                width: 1,
+                                                                              ),
+                                                                              borderRadius: 12,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ],
                                                     ),

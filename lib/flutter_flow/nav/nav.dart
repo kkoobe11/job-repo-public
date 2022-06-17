@@ -101,64 +101,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => NewApplicantListWidget(),
             ),
             FFRoute(
-              name: 'editApplicant',
-              path: 'editApplicant',
-              builder: (context, params) => EditApplicantWidget(),
-            ),
-            FFRoute(
-              name: 'table',
-              path: 'table',
-              builder: (context, params) => TableWidget(),
-            ),
-            FFRoute(
               name: 'newAddApplicant',
               path: 'newAddApplicant',
               builder: (context, params) => NewAddApplicantWidget(),
             ),
             FFRoute(
+              name: 'applicanInformation',
+              path: 'applicanInformation',
+              builder: (context, params) => ApplicanInformationWidget(),
+            ),
+            FFRoute(
+              name: 'editApplicant',
+              path: 'editApplicant',
+              builder: (context, params) => EditApplicantWidget(),
+            ),
+            FFRoute(
               name: 'scaffold',
               path: 'scaffold',
               builder: (context, params) => ScaffoldWidget(),
-            ),
-            FFRoute(
-              name: 'login',
-              path: 'login',
-              builder: (context, params) => LoginWidget(),
-            ),
-            FFRoute(
-              name: 'loginanimation',
-              path: 'loginanimation',
-              builder: (context, params) => LoginanimationWidget(),
-            ),
-            FFRoute(
-              name: 'homefeed',
-              path: 'homefeed',
-              builder: (context, params) => HomefeedWidget(),
-            ),
-            FFRoute(
-              name: 'extend',
-              path: 'extend',
-              builder: (context, params) => ExtendWidget(),
-            ),
-            FFRoute(
-              name: 'appplicantList',
-              path: 'appplicantList',
-              builder: (context, params) => AppplicantListWidget(),
-            ),
-            FFRoute(
-              name: 'addApplicant',
-              path: 'addApplicant',
-              builder: (context, params) => AddApplicantWidget(),
-            ),
-            FFRoute(
-              name: 'pagingtest',
-              path: 'pagingtest',
-              builder: (context, params) => PagingtestWidget(),
-            ),
-            FFRoute(
-              name: 'landingpage',
-              path: 'landingpage',
-              builder: (context, params) => LandingpageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

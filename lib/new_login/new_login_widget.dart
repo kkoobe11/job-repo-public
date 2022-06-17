@@ -189,19 +189,25 @@ class _NewLoginWidgetState extends State<NewLoginWidget> {
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           children: [
-                                                            Container(
-                                                              width: 120,
-                                                              height: 150,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                image:
-                                                                    DecorationImage(
-                                                                  fit: BoxFit
-                                                                      .fitHeight,
-                                                                  image: Image
-                                                                      .asset(
-                                                                    'assets/images/sun_bulb.png',
-                                                                  ).image,
+                                                            InkWell(
+                                                              onTap: () async {
+                                                                context.pushNamed(
+                                                                    'newHomefeed');
+                                                              },
+                                                              child: Container(
+                                                                width: 120,
+                                                                height: 150,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  image:
+                                                                      DecorationImage(
+                                                                    fit: BoxFit
+                                                                        .fitHeight,
+                                                                    image: Image
+                                                                        .asset(
+                                                                      'assets/images/sun_bulb.png',
+                                                                    ).image,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
@@ -473,7 +479,7 @@ class _NewLoginWidgetState extends State<NewLoginWidget> {
                                                                 textController
                                                                     .text,
                                                           );
-                                                          context.pushNamed(
+                                                          context.goNamed(
                                                               'loginmessage');
                                                         },
                                                         text: 'Login\n',
