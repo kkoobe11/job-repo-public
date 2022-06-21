@@ -231,3 +231,19 @@ class AuthMeCall {
     );
   }
 }
+
+class EditHistoryCall {
+  static Future<ApiCallResponse> call({
+    int applicantId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'editHistory',
+      apiUrl:
+          'https://api.ahglab.com/api:rHt2aRC2/applicant_history/${applicantId}',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+    );
+  }
+}

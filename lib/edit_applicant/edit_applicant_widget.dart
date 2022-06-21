@@ -1,3 +1,5 @@
+import '../applican_information/applican_information_widget.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -5,7 +7,6 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditApplicantWidget extends StatefulWidget {
@@ -16,54 +17,39 @@ class EditApplicantWidget extends StatefulWidget {
 }
 
 class _EditApplicantWidgetState extends State<EditApplicantWidget> {
-  String dropDownValue;
-  TextEditingController textController1;
-  TextEditingController textController2;
-  TextEditingController textController3;
-  TextEditingController textController4;
-  TextEditingController textController5;
-  TextEditingController textController6;
-  TextEditingController textController7;
+  ApiCallResponse result;
+  String deptValue;
+  String platformValue;
+  TextEditingController nameController;
+  String statusValue;
+  TextEditingController positionController;
+  TextEditingController dateAppliedController;
+  TextEditingController noteController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    // On page load action.
-    SchedulerBinding.instance?.addPostFrameCallback((_) async {
-      if (!((FFAppState().authToken != null) &&
-          (FFAppState().authToken != ''))) {
-        context.goNamed('newLogin');
-      }
-    });
-
-    textController1 = TextEditingController(
-        text: getJsonField(
-      FFAppState().records,
-      r'''$.name''',
-    ).toString());
-    textController2 = TextEditingController(
-        text: getJsonField(
-      FFAppState().records,
-      r'''$.status''',
-    ).toString());
-    textController3 = TextEditingController(
-        text: getJsonField(
-      FFAppState().records,
-      r'''$.position''',
-    ).toString());
-    textController4 = TextEditingController(
-        text: getJsonField(
-      FFAppState().records,
-      r'''$.department''',
-    ).toString());
-    textController5 = TextEditingController(
+    dateAppliedController = TextEditingController(
         text: getJsonField(
       FFAppState().records,
       r'''$.created_at''',
     ).toString());
-    textController6 = TextEditingController();
-    textController7 = TextEditingController();
+    noteController = TextEditingController(
+        text: getJsonField(
+      FFAppState().records,
+      r'''$.note''',
+    ).toString());
+    nameController = TextEditingController(
+        text: getJsonField(
+      FFAppState().records,
+      r'''$.name''',
+    ).toString());
+    positionController = TextEditingController(
+        text: getJsonField(
+      FFAppState().records,
+      r'''$.position''',
+    ).toString());
   }
 
   @override
@@ -302,42 +288,6 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 25, 0),
-                                          child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
-                                            },
-                                            text: 'Add Applicant',
-                                            icon: Icon(
-                                              Icons.add,
-                                              size: 15,
-                                            ),
-                                            options: FFButtonOptions(
-                                              width: 250,
-                                              height: 50,
-                                              color: Color(0xFFFD8B75),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .title2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.white,
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1,
-                                              ),
-                                              borderRadius: 5,
-                                            ),
-                                            showLoadingIndicator: false,
-                                          ),
-                                        ),
                                         FFButtonWidget(
                                           onPressed: () {
                                             print('Button pressed ...');
@@ -414,8 +364,14 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                         color: Color(0xFFE76262),
                                         size: 30,
                                       ),
-                                      onPressed: () {
-                                        print('IconButton pressed ...');
+                                      onPressed: () async {
+                                        await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ApplicanInformationWidget(),
+                                          ),
+                                        );
                                       },
                                     ),
                                     Align(
@@ -572,11 +528,11 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                     child:
                                                                         TextFormField(
                                                                       controller:
-                                                                          textController1,
+                                                                          nameController,
                                                                       onChanged:
                                                                           (_) =>
                                                                               EasyDebounce.debounce(
-                                                                        'textController1',
+                                                                        'nameController',
                                                                         Duration(
                                                                             milliseconds:
                                                                                 2000),
@@ -695,7 +651,7 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                       ],
                                                                       onChanged:
                                                                           (val) =>
-                                                                              setState(() => dropDownValue = val),
+                                                                              setState(() => platformValue = val),
                                                                       width:
                                                                           180,
                                                                       height:
@@ -805,65 +761,65 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                           0xFFF7F7FC),
                                                                     ),
                                                                     child:
-                                                                        TextFormField(
-                                                                      controller:
-                                                                          textController2,
+                                                                        FlutterFlowDropDown(
+                                                                      initialOption:
+                                                                          statusValue ??=
+                                                                              getJsonField(
+                                                                        FFAppState()
+                                                                            .records,
+                                                                        r'''$.status''',
+                                                                      ).toString(),
+                                                                      options: [
+                                                                        'New',
+                                                                        'Scheduled',
+                                                                        'Interviewed',
+                                                                        'Passed',
+                                                                        'For Approval',
+                                                                        'Approved',
+                                                                        'Job Offer Sent',
+                                                                        'Accepted',
+                                                                        'Contract Signed',
+                                                                        'Hired',
+                                                                        'Rejected'
+                                                                      ],
                                                                       onChanged:
-                                                                          (_) =>
-                                                                              EasyDebounce.debounce(
-                                                                        'textController2',
-                                                                        Duration(
-                                                                            milliseconds:
-                                                                                2000),
-                                                                        () => setState(
-                                                                            () {}),
-                                                                      ),
-                                                                      autofocus:
-                                                                          true,
-                                                                      obscureText:
-                                                                          false,
-                                                                      decoration:
-                                                                          InputDecoration(
-                                                                        hintText:
-                                                                            '[Some hint text...]',
-                                                                        enabledBorder:
-                                                                            UnderlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
-                                                                            width:
-                                                                                1,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              const BorderRadius.only(
-                                                                            topLeft:
-                                                                                Radius.circular(4.0),
-                                                                            topRight:
-                                                                                Radius.circular(4.0),
-                                                                          ),
-                                                                        ),
-                                                                        focusedBorder:
-                                                                            UnderlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
-                                                                            width:
-                                                                                1,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              const BorderRadius.only(
-                                                                            topLeft:
-                                                                                Radius.circular(4.0),
-                                                                            topRight:
-                                                                                Radius.circular(4.0),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
+                                                                          (val) =>
+                                                                              setState(() => statusValue = val),
+                                                                      width:
+                                                                          180,
+                                                                      height:
+                                                                          50,
+                                                                      textStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1,
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                Colors.black,
+                                                                          ),
+                                                                      hintText:
+                                                                          'Please select...',
+                                                                      fillColor:
+                                                                          Colors
+                                                                              .white,
+                                                                      elevation:
+                                                                          2,
+                                                                      borderColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      borderWidth:
+                                                                          0,
+                                                                      borderRadius:
+                                                                          0,
+                                                                      margin: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              12,
+                                                                              4,
+                                                                              12,
+                                                                              4),
+                                                                      hidesUnderline:
+                                                                          true,
                                                                     ),
                                                                   ),
                                                                 ],
@@ -1010,11 +966,11 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                     child:
                                                                         TextFormField(
                                                                       controller:
-                                                                          textController3,
+                                                                          positionController,
                                                                       onChanged:
                                                                           (_) =>
                                                                               EasyDebounce.debounce(
-                                                                        'textController3',
+                                                                        'positionController',
                                                                         Duration(
                                                                             milliseconds:
                                                                                 2000),
@@ -1202,65 +1158,60 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                           0xFFF7F7FC),
                                                                     ),
                                                                     child:
-                                                                        TextFormField(
-                                                                      controller:
-                                                                          textController4,
+                                                                        FlutterFlowDropDown(
+                                                                      initialOption:
+                                                                          deptValue ??=
+                                                                              getJsonField(
+                                                                        FFAppState()
+                                                                            .records,
+                                                                        r'''$.dept''',
+                                                                      ).toString(),
+                                                                      options: [
+                                                                        'Accomodations',
+                                                                        'Finance',
+                                                                        'Human Resources',
+                                                                        'Marketing',
+                                                                        'Tech',
+                                                                        'Ventures'
+                                                                      ],
                                                                       onChanged:
-                                                                          (_) =>
-                                                                              EasyDebounce.debounce(
-                                                                        'textController4',
-                                                                        Duration(
-                                                                            milliseconds:
-                                                                                2000),
-                                                                        () => setState(
-                                                                            () {}),
-                                                                      ),
-                                                                      autofocus:
-                                                                          true,
-                                                                      obscureText:
-                                                                          false,
-                                                                      decoration:
-                                                                          InputDecoration(
-                                                                        hintText:
-                                                                            '[Some hint text...]',
-                                                                        enabledBorder:
-                                                                            UnderlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
-                                                                            width:
-                                                                                1,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              const BorderRadius.only(
-                                                                            topLeft:
-                                                                                Radius.circular(4.0),
-                                                                            topRight:
-                                                                                Radius.circular(4.0),
-                                                                          ),
-                                                                        ),
-                                                                        focusedBorder:
-                                                                            UnderlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
-                                                                            width:
-                                                                                1,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              const BorderRadius.only(
-                                                                            topLeft:
-                                                                                Radius.circular(4.0),
-                                                                            topRight:
-                                                                                Radius.circular(4.0),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
+                                                                          (val) =>
+                                                                              setState(() => deptValue = val),
+                                                                      width:
+                                                                          180,
+                                                                      height:
+                                                                          50,
+                                                                      textStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyText1,
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                Colors.black,
+                                                                          ),
+                                                                      hintText:
+                                                                          'Please select...',
+                                                                      fillColor:
+                                                                          Colors
+                                                                              .white,
+                                                                      elevation:
+                                                                          2,
+                                                                      borderColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      borderWidth:
+                                                                          0,
+                                                                      borderRadius:
+                                                                          0,
+                                                                      margin: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              12,
+                                                                              4,
+                                                                              12,
+                                                                              4),
+                                                                      hidesUnderline:
+                                                                          true,
                                                                     ),
                                                                   ),
                                                                 ],
@@ -1327,7 +1278,7 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                       getJsonField(
                                                                         FFAppState()
                                                                             .records,
-                                                                        r'''$.lastModifiedBy''',
+                                                                        r'''$.lastModifiedBy.name''',
                                                                       ).toString(),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1405,11 +1356,11 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                     child:
                                                                         TextFormField(
                                                                       controller:
-                                                                          textController5,
+                                                                          dateAppliedController,
                                                                       onChanged:
                                                                           (_) =>
                                                                               EasyDebounce.debounce(
-                                                                        'textController5',
+                                                                        'dateAppliedController',
                                                                         Duration(
                                                                             milliseconds:
                                                                                 2000),
@@ -1524,11 +1475,11 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                     child:
                                                                         TextFormField(
                                                                       controller:
-                                                                          textController6,
+                                                                          noteController,
                                                                       onChanged:
                                                                           (_) =>
                                                                               EasyDebounce.debounce(
-                                                                        'textController6',
+                                                                        'noteController',
                                                                         Duration(
                                                                             milliseconds:
                                                                                 2000),
@@ -1644,73 +1595,78 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                         .max,
                                                                 children: [
                                                                   Container(
-                                                                    width: 500,
+                                                                    width: 300,
                                                                     height: 45,
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       color: Color(
                                                                           0xFFF7F7FC),
                                                                     ),
-                                                                    child:
-                                                                        TextFormField(
-                                                                      controller:
-                                                                          textController7,
-                                                                      onChanged:
-                                                                          (_) =>
-                                                                              EasyDebounce.debounce(
-                                                                        'textController7',
-                                                                        Duration(
-                                                                            milliseconds:
-                                                                                2000),
-                                                                        () => setState(
-                                                                            () {}),
-                                                                      ),
-                                                                      autofocus:
-                                                                          true,
-                                                                      obscureText:
-                                                                          false,
-                                                                      decoration:
-                                                                          InputDecoration(
-                                                                        hintText:
-                                                                            '[Some hint text...]',
-                                                                        enabledBorder:
-                                                                            UnderlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        FFButtonWidget(
+                                                                          onPressed:
+                                                                              () {
+                                                                            print('CV pressed ...');
+                                                                          },
+                                                                          text:
+                                                                              getJsonField(
+                                                                            FFAppState().records,
+                                                                            r'''$.curriculumVitae.name''',
+                                                                          ).toString(),
+                                                                          options:
+                                                                              FFButtonOptions(
                                                                             width:
-                                                                                1,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              const BorderRadius.only(
-                                                                            topLeft:
-                                                                                Radius.circular(4.0),
-                                                                            topRight:
-                                                                                Radius.circular(4.0),
+                                                                                130,
+                                                                            height:
+                                                                                40,
+                                                                            color:
+                                                                                Color(0xFFEE8B60),
+                                                                            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: Colors.white,
+                                                                                ),
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Colors.transparent,
+                                                                              width: 1,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                12,
                                                                           ),
                                                                         ),
-                                                                        focusedBorder:
-                                                                            UnderlineInputBorder(
-                                                                          borderSide:
-                                                                              BorderSide(
-                                                                            color:
-                                                                                Color(0x00000000),
+                                                                        FFButtonWidget(
+                                                                          onPressed:
+                                                                              () {
+                                                                            print('CV pressed ...');
+                                                                          },
+                                                                          text:
+                                                                              'upload file',
+                                                                          options:
+                                                                              FFButtonOptions(
                                                                             width:
-                                                                                1,
-                                                                          ),
-                                                                          borderRadius:
-                                                                              const BorderRadius.only(
-                                                                            topLeft:
-                                                                                Radius.circular(4.0),
-                                                                            topRight:
-                                                                                Radius.circular(4.0),
+                                                                                130,
+                                                                            height:
+                                                                                40,
+                                                                            color:
+                                                                                Color(0xFFEE8B60),
+                                                                            textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: Colors.white,
+                                                                                ),
+                                                                            borderSide:
+                                                                                BorderSide(
+                                                                              color: Colors.transparent,
+                                                                              width: 1,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                12,
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyText1,
+                                                                      ],
                                                                     ),
                                                                   ),
                                                                 ],
@@ -1808,8 +1764,68 @@ class _EditApplicantWidgetState extends State<EditApplicantWidget> {
                                                                           child:
                                                                               FFButtonWidget(
                                                                             onPressed:
-                                                                                () {
-                                                                              print('Button pressed ...');
+                                                                                () async {
+                                                                              var _shouldSetState = false;
+                                                                              result = await EditCall.call(
+                                                                                name: nameController.text,
+                                                                                position: positionController.text,
+                                                                                dept: deptValue,
+                                                                                status: statusValue,
+                                                                                note: noteController.text,
+                                                                                applicantsId: getJsonField(
+                                                                                  FFAppState().records,
+                                                                                  r'''$.id''',
+                                                                                ),
+                                                                                authToken: FFAppState().authToken,
+                                                                              );
+                                                                              _shouldSetState = true;
+                                                                              if ((result?.succeeded ?? true)) {
+                                                                                await showDialog(
+                                                                                  context: context,
+                                                                                  builder: (alertDialogContext) {
+                                                                                    return AlertDialog(
+                                                                                      title: Text('Success'),
+                                                                                      content: Text('Data updated!'),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                          child: Text('Ok'),
+                                                                                        ),
+                                                                                      ],
+                                                                                    );
+                                                                                  },
+                                                                                );
+                                                                                setState(() => FFAppState().records = (result?.jsonBody ?? ''));
+                                                                                await Navigator.push(
+                                                                                  context,
+                                                                                  MaterialPageRoute(
+                                                                                    builder: (context) => EditApplicantWidget(),
+                                                                                  ),
+                                                                                );
+                                                                                if (_shouldSetState) setState(() {});
+                                                                                return;
+                                                                              } else {
+                                                                                await showDialog(
+                                                                                  context: context,
+                                                                                  builder: (alertDialogContext) {
+                                                                                    return AlertDialog(
+                                                                                      title: Text('Error'),
+                                                                                      content: Text('Something went wrong please try again'),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                          child: Text('Ok'),
+                                                                                        ),
+                                                                                      ],
+                                                                                    );
+                                                                                  },
+                                                                                );
+                                                                                if (_shouldSetState) setState(() {});
+                                                                                return;
+                                                                              }
+
+                                                                              if (_shouldSetState)
+                                                                                setState(() {});
                                                                             },
                                                                             text:
                                                                                 'Save',

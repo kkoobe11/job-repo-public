@@ -9,15 +9,15 @@ import '../new_applicant_list/new_applicant_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ApplicanInformationWidget extends StatefulWidget {
-  const ApplicanInformationWidget({Key key}) : super(key: key);
+class EmployeeInformationWidget extends StatefulWidget {
+  const EmployeeInformationWidget({Key key}) : super(key: key);
 
   @override
-  _ApplicanInformationWidgetState createState() =>
-      _ApplicanInformationWidgetState();
+  _EmployeeInformationWidgetState createState() =>
+      _EmployeeInformationWidgetState();
 }
 
-class _ApplicanInformationWidgetState extends State<ApplicanInformationWidget> {
+class _EmployeeInformationWidgetState extends State<EmployeeInformationWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -374,7 +374,7 @@ class _ApplicanInformationWidgetState extends State<ApplicanInformationWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   30, 0, 0, 0),
                                           child: Text(
-                                            'Applicant Information',
+                                            'Employee Information',
                                             style: FlutterFlowTheme.of(context)
                                                 .title1
                                                 .override(
@@ -932,7 +932,7 @@ class _ApplicanInformationWidgetState extends State<ApplicanInformationWidget> {
                                                                                 BoxDecoration(),
                                                                             child:
                                                                                 Text(
-                                                                              'Date Applied',
+                                                                              'Employment Date',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Poppins',
                                                                                     color: Color(0xFFC3C3C3),
@@ -1020,7 +1020,7 @@ class _ApplicanInformationWidgetState extends State<ApplicanInformationWidget> {
                                                                                 BoxDecoration(),
                                                                             child:
                                                                                 Text(
-                                                                              'Platform Applied',
+                                                                              'Classification',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Poppins',
                                                                                     color: Color(0xFFC3C3C3),
@@ -1105,7 +1105,7 @@ class _ApplicanInformationWidgetState extends State<ApplicanInformationWidget> {
                                                                                 BoxDecoration(),
                                                                             child:
                                                                                 Text(
-                                                                              'Referred By',
+                                                                              'Emergency Contact',
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Poppins',
                                                                                     color: Color(0xFFC3C3C3),
@@ -1136,179 +1136,6 @@ class _ApplicanInformationWidgetState extends State<ApplicanInformationWidget> {
                                                                             child:
                                                                                 Text(
                                                                               '[referred by]',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Poppins',
-                                                                                    fontSize: 20,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          50,
-                                                                          10,
-                                                                          80,
-                                                                          0),
-                                                              child: Container(
-                                                                width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width,
-                                                                height: 50,
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        Expanded(
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                200,
-                                                                            height:
-                                                                                100,
-                                                                            decoration:
-                                                                                BoxDecoration(),
-                                                                            child:
-                                                                                Text(
-                                                                              'Hiring Manager',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Poppins',
-                                                                                    color: Color(0xFFC3C3C3),
-                                                                                    fontSize: 20,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                    Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        Expanded(
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                300,
-                                                                            height:
-                                                                                100,
-                                                                            decoration:
-                                                                                BoxDecoration(),
-                                                                            child:
-                                                                                Text(
-                                                                              '[hiring manager]',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Poppins',
-                                                                                    fontSize: 20,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          50,
-                                                                          10,
-                                                                          80,
-                                                                          0),
-                                                              child: Container(
-                                                                width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width,
-                                                                height: 50,
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        Expanded(
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                200,
-                                                                            height:
-                                                                                100,
-                                                                            decoration:
-                                                                                BoxDecoration(),
-                                                                            child:
-                                                                                Text(
-                                                                              'Modified By',
-                                                                              style: FlutterFlowTheme.of(context).bodyText1.override(
-                                                                                    fontFamily: 'Poppins',
-                                                                                    color: Color(0xFFC3C3C3),
-                                                                                    fontSize: 20,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                    Column(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      children: [
-                                                                        Expanded(
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                300,
-                                                                            height:
-                                                                                100,
-                                                                            decoration:
-                                                                                BoxDecoration(),
-                                                                            child:
-                                                                                Text(
-                                                                              getJsonField(
-                                                                                FFAppState().records,
-                                                                                r'''$.lastModifiedBy.name''',
-                                                                              ).toString(),
                                                                               style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                     fontFamily: 'Poppins',
                                                                                     fontSize: 20,

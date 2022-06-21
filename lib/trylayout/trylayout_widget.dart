@@ -5,25 +5,25 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../new_add_applicant/new_add_applicant_widget.dart';
 import '../new_homefeed/new_homefeed_widget.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NewApplicantListWidget extends StatefulWidget {
-  const NewApplicantListWidget({Key key}) : super(key: key);
+class TrylayoutWidget extends StatefulWidget {
+  const TrylayoutWidget({Key key}) : super(key: key);
 
   @override
-  _NewApplicantListWidgetState createState() => _NewApplicantListWidgetState();
+  _TrylayoutWidgetState createState() => _TrylayoutWidgetState();
 }
 
-class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
+class _TrylayoutWidgetState extends State<TrylayoutWidget> {
   ApiCallResponse result;
   String dropDownValue1;
   String dropDownValue2;
   String dropDownValue3;
   String dropDownValue4;
+  String dropDownValue5;
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -242,6 +242,76 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                               height: 10,
                                                               decoration:
                                                                   BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            15),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0, 0.75),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            FFButtonWidget(
+                                                              onPressed: () {
+                                                                print(
+                                                                    'Button pressed ...');
+                                                              },
+                                                              text:
+                                                                  'Employee List',
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                width: 250,
+                                                                height: 60,
+                                                                color: Color(
+                                                                    0xFF1A1A1A),
+                                                                textStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle2
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                    ),
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                ),
+                                                                borderRadius: 0,
+                                                              ),
+                                                              showLoadingIndicator:
+                                                                  false,
+                                                            ),
+                                                            Container(
+                                                              width: 125,
+                                                              height: 10,
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 color: Color(
                                                                     0xFFFD8B75),
                                                                 borderRadius:
@@ -348,7 +418,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           30, 20, 0, 0),
                                       child: Text(
-                                        'Applicant List',
+                                        'Employee List',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
@@ -606,7 +676,44 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                   .of(context)
                                                               .white,
                                                         ),
-                                                    hintText: 'Modified By',
+                                                    hintText: 'Employment Date',
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .customColor4,
+                                                    elevation: 2,
+                                                    borderColor:
+                                                        Colors.transparent,
+                                                    borderWidth: 0,
+                                                    borderRadius: 12,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                12, 4, 12, 4),
+                                                    hidesUnderline: true,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 0, 0, 0),
+                                                  child: FlutterFlowDropDown(
+                                                    options: ['Option 1'],
+                                                    onChanged: (val) =>
+                                                        setState(() =>
+                                                            dropDownValue5 =
+                                                                val),
+                                                    width: 180,
+                                                    height: 50,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .white,
+                                                        ),
+                                                    hintText: 'Classification',
                                                     fillColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -642,7 +749,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    30, 0, 45, 20),
+                                                    10, 0, 10, 20),
                                             child: Material(
                                               color: Colors.transparent,
                                               elevation: 15,
@@ -674,7 +781,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                         Expanded(
                                                           child: Container(
                                                             width: 100,
-                                                            height: 60,
+                                                            height: 80,
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: Color(
@@ -922,7 +1029,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                             ),
                                                                             child:
                                                                                 Text(
-                                                                              'Date Applied',
+                                                                              'Email',
                                                                               textAlign: TextAlign.center,
                                                                               style: FlutterFlowTheme.of(context).title1.override(
                                                                                     fontFamily: 'Poppins',
@@ -966,7 +1073,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                           ),
                                                                           child:
                                                                               Text(
-                                                                            'Modified by\n',
+                                                                            'Employment Date',
                                                                             textAlign:
                                                                                 TextAlign.center,
                                                                             style: FlutterFlowTheme.of(context).title1.override(
@@ -1017,6 +1124,188 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                       ),
                                                                     ],
                                                                   ),
+                                                                ),
+                                                                Expanded(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Container(
+                                                                          width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.9,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFF7F7FC),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(0),
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            'Classification',
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style: FlutterFlowTheme.of(context).title1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: Color(0xFF1A1A1A),
+                                                                                  fontSize: 24,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Container(
+                                                                          width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.9,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFF7F7FC),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(0),
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            'Emergency Contact',
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style: FlutterFlowTheme.of(context).title1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: Color(0xFF1A1A1A),
+                                                                                  fontSize: 26,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Container(
+                                                                          width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.9,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFF7F7FC),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(0),
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            'Picture',
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style: FlutterFlowTheme.of(context).title1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: Color(0xFF1A1A1A),
+                                                                                  fontSize: 26,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Expanded(
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child:
+                                                                            Container(
+                                                                          width: MediaQuery.of(context)
+                                                                              .size
+                                                                              .width,
+                                                                          height:
+                                                                              MediaQuery.of(context).size.height * 0.9,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Color(0xFFF7F7FC),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(0),
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            'Resume',
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style: FlutterFlowTheme.of(context).title1.override(
+                                                                                  fontFamily: 'Poppins',
+                                                                                  color: Color(0xFF1A1A1A),
+                                                                                  fontSize: 26,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [],
                                                                 ),
                                                               ],
                                                             ),
@@ -1289,10 +1578,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                                                                     children: [
                                                                                                                       Expanded(
                                                                                                                         child: Text(
-                                                                                                                          getJsonField(
-                                                                                                                            listItem,
-                                                                                                                            r'''$.created_at''',
-                                                                                                                          ).toString(),
+                                                                                                                          'Email',
                                                                                                                           textAlign: TextAlign.center,
                                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                                 fontFamily: 'Poppins',
@@ -1320,10 +1606,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                                                                     children: [
                                                                                                                       Expanded(
                                                                                                                         child: Text(
-                                                                                                                          getJsonField(
-                                                                                                                            listItem,
-                                                                                                                            r'''$.lastModifiedBy.name''',
-                                                                                                                          ).toString(),
+                                                                                                                          'Date',
                                                                                                                           textAlign: TextAlign.center,
                                                                                                                           style: FlutterFlowTheme.of(context).bodyText1.override(
                                                                                                                                 fontFamily: 'Poppins',
@@ -1333,6 +1616,114 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     ],
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              ],
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                          Expanded(
+                                                                                                            child: Column(
+                                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                              children: [
+                                                                                                                Expanded(
+                                                                                                                  child: Row(
+                                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                                    children: [
+                                                                                                                      Expanded(
+                                                                                                                        child: Text(
+                                                                                                                          'Classification',
+                                                                                                                          textAlign: TextAlign.center,
+                                                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                                                fontFamily: 'Poppins',
+                                                                                                                                color: Color(0xFF040404),
+                                                                                                                                fontSize: 20,
+                                                                                                                              ),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ],
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              ],
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                          Expanded(
+                                                                                                            child: Column(
+                                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                              children: [
+                                                                                                                Expanded(
+                                                                                                                  child: Row(
+                                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                                    children: [
+                                                                                                                      Expanded(
+                                                                                                                        child: Text(
+                                                                                                                          'Contact',
+                                                                                                                          textAlign: TextAlign.center,
+                                                                                                                          style: FlutterFlowTheme.of(context).bodyText1.override(
+                                                                                                                                fontFamily: 'Poppins',
+                                                                                                                                color: Color(0xFF040404),
+                                                                                                                                fontSize: 20,
+                                                                                                                              ),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ],
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              ],
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                          Expanded(
+                                                                                                            child: Column(
+                                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                              children: [
+                                                                                                                Expanded(
+                                                                                                                  child: Row(
+                                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                                    children: [
+                                                                                                                      Image.network(
+                                                                                                                        'https://picsum.photos/seed/128/600',
+                                                                                                                        width: 100,
+                                                                                                                        height: 100,
+                                                                                                                        fit: BoxFit.cover,
+                                                                                                                      ),
+                                                                                                                    ],
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              ],
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                          Expanded(
+                                                                                                            child: Column(
+                                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                              children: [
+                                                                                                                FFButtonWidget(
+                                                                                                                  onPressed: () {
+                                                                                                                    print('Button pressed ...');
+                                                                                                                  },
+                                                                                                                  text: 'Resume',
+                                                                                                                  options: FFButtonOptions(
+                                                                                                                    width: 130,
+                                                                                                                    height: 40,
+                                                                                                                    color: FlutterFlowTheme.of(context).tertiaryColor,
+                                                                                                                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                                                                                          fontFamily: 'Poppins',
+                                                                                                                          color: Colors.white,
+                                                                                                                        ),
+                                                                                                                    borderSide: BorderSide(
+                                                                                                                      color: Colors.transparent,
+                                                                                                                      width: 1,
+                                                                                                                    ),
+                                                                                                                    borderRadius: 12,
                                                                                                                   ),
                                                                                                                 ),
                                                                                                               ],
@@ -1419,38 +1810,7 @@ class _NewApplicantListWidgetState extends State<NewApplicantListWidget> {
                                                                               MainAxisAlignment.center,
                                                                           crossAxisAlignment:
                                                                               CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            FFButtonWidget(
-                                                                              onPressed: () async {
-                                                                                await Navigator.push(
-                                                                                  context,
-                                                                                  MaterialPageRoute(
-                                                                                    builder: (context) => NewAddApplicantWidget(),
-                                                                                  ),
-                                                                                );
-                                                                              },
-                                                                              text: 'Add Applicant',
-                                                                              icon: Icon(
-                                                                                Icons.add,
-                                                                                size: 15,
-                                                                              ),
-                                                                              options: FFButtonOptions(
-                                                                                width: 250,
-                                                                                height: 55,
-                                                                                color: Color(0xFFFD8972),
-                                                                                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                                                                                      fontFamily: 'Poppins',
-                                                                                      color: Colors.white,
-                                                                                      fontSize: 18,
-                                                                                    ),
-                                                                                borderSide: BorderSide(
-                                                                                  color: Colors.transparent,
-                                                                                  width: 1,
-                                                                                ),
-                                                                                borderRadius: 5,
-                                                                              ),
-                                                                            ),
-                                                                          ],
+                                                                          children: [],
                                                                         ),
                                                                       ],
                                                                     ),

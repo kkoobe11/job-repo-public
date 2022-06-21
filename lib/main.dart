@@ -7,7 +7,6 @@ import 'auth/firebase_user_provider.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
-import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
 void main() async {
@@ -33,20 +32,17 @@ class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
   Stream<AhgJobRepositoryFirebaseUser> userStream;
-
-  AppStateNotifier _appStateNotifier;
-  GoRouter _router;
+  AhgJobRepositoryFirebaseUser initialUser;
+  bool displaySplashImage = true;
 
   @override
   void initState() {
     super.initState();
-    _appStateNotifier = AppStateNotifier();
-    _router = createRouter(_appStateNotifier);
     userStream = ahgJobRepositoryFirebaseUserStream()
-      ..listen((user) => _appStateNotifier.update(user));
+      ..listen((user) => initialUser ?? setState(() => initialUser = user));
     Future.delayed(
       Duration(seconds: 1),
-      () => _appStateNotifier.stopShowingSplashImage(),
+      () => setState(() => displaySplashImage = false),
     );
   }
 
@@ -57,7 +53,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'ahg job repository',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
@@ -69,8 +65,19 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(brightness: Brightness.light),
       themeMode: _themeMode,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
+      home: initialUser == null || displaySplashImage
+          ? Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.of(context).primaryColor,
+                ),
+              ),
+            )
+          : currentUser.loggedIn
+              ? NewHomefeedWidget()
+              : NewLoginWidget(),
     );
   }
 }
