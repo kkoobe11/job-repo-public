@@ -43,7 +43,18 @@ class FFAppState {
 
   String statusInterviewed = 'Interviewed';
 
-  String authToken = '';
+  String authToken =
+      'eyJhbGciOiJBMjU2S1ciLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwiemlwIjoiREVGIn0.MRqf6Wt-Jpa9dZ8trvI2Oatb8u-D99mTi9DpQZh5oSbNdvuSZNPBuLswKyWR2fVFwiGBuUrWzDAy9x-19fTXOwOFguzLeTV1.qwnmpzM0VGpNfXBnjZMHRg.jAPsflQuhhNUOZcQUVempHo90I6vm1NIDcr8aCySOlgDy72QGC-J7xUYQUlw6yIks8NRZHAEgc17GIDakpdKlLH9B0fCNvSxk2UNG9GrDilRoR-2lmshXwHA0s8rQEAL8HdchbmDsb2JLodtlXC7Xg.Vx5k5rhkjezyehpcX4SQg5jlF-F57maz9fts1yk93lw';
+
+  dynamic userInfo;
+
+  String pageurl = '';
+
+  dynamic dashboard;
+
+  int count = 1;
+
+  int count1 = 0;
 }
 
 LatLng _latLngFromString(String val) {

@@ -203,17 +203,13 @@ class LatestApplicantCall {
 }
 
 class ApplicantDashboardCall {
-  static Future<ApiCallResponse> call({
-    String deptStatus = '',
-  }) {
+  static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
       callName: 'applicant dashboard',
       apiUrl: 'https://api.ahglab.com/api:rHt2aRC2/applicants/dashboard/query',
       callType: ApiCallType.GET,
       headers: {},
-      params: {
-        'deptStatus': deptStatus,
-      },
+      params: {},
       returnBody: true,
     );
   }
@@ -230,6 +226,22 @@ class AuthMeCall {
       headers: {
         'Authorization': 'Bearer ${authToken}',
       },
+      params: {},
+      returnBody: true,
+    );
+  }
+}
+
+class EditHistoryCall {
+  static Future<ApiCallResponse> call({
+    int applicantId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'editHistory',
+      apiUrl:
+          'https://api.ahglab.com/api:rHt2aRC2/applicant_history/${applicantId}',
+      callType: ApiCallType.GET,
+      headers: {},
       params: {},
       returnBody: true,
     );

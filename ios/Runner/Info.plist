@@ -33,19 +33,7 @@
             </array>
         </dict>
 
-        <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>ahgjobrepository.page.link</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-        <string>ahgjobrepository</string>
-        </array>
-        </dict>
     </array>
-    <key>FlutterDeepLinkingEnabled</key>
-    <true/>
 
 
 	<key>CFBundleVersion</key>
